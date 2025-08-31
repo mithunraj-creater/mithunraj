@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: darkblue; }
+    .chatbox {
+      border: 1px solid #ccc; padding: 10px; width: 300px;
+      position: fixed; bottom: 20px; right: 20px; background: #f9f9f9;
+    }
+    #messages { height: 150px; overflow-y: auto; margin-bottom: 5px; }
+    .user { color: blue; text-align: right; }
+    .bot { color: green; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h1>My Portfolio</h1>
+  <p>Hello! I am an IT student. Welcome to my portfolio.</p>
+  <h2>Skills</h2>
+  <p>HTML, CSS, JavaScript, Python</p>
+  <h2>Projects</h2>
+  <p>AI Portfolio,Quizapp, Management System</p><b></b>
+  <h2>Contact</h2>
+  <p>Email: myemail@example.com</p>
+  <p>phone: 9876543210</p>
+
+
+  <!-- Simple Chatbot -->
+  <div class="chatbox">
+    <div id="messages"></div>
+    <input type="text" id="input" placeholder="Ask me..." />
+    <button onclick="send()">Send</button>
+  </div>
+
+  <script>
+    function send() {
+      let input = document.getElementById("input").value;
+      if (!input) return;
+      addMessage("user", input);
+
+      let reply = "I didn’t understand. Try 'skills' or 'projects'.";
+      if (input.toLowerCase().includes("skills")) reply = "I know HTML, CSS, JavaScript, and Python.";
+      if (input.toLowerCase().includes("projects")) reply = "I made an AI Portfolio, Quiz App, and Management System.";
+      if (input.toLowerCase().includes("contact")) reply = "You can email me at myemail@example.com.";
+
+      setTimeout(() => addMessage("bot", reply), 400);
+      document.getElementById("input").value = "";
+    }
+
+    function addMessage(sender, text) {
+      let div = document.createElement("div");
+      div.className = sender;
+      div.innerText = text;
+      document.getElementById("messages").appendChild(div);
+      document.getElementById("messages").scrollTop = 9999;
+    }
+  </script>
+
+</body>
+</html>
